@@ -1,0 +1,6 @@
+Ignore = [
+    "ignored-file.css",
+    "ignored-subfolder",
+    "subfolder/ignored-subfolder-file.css",
+    "subfolder/ignored-subsubfolder",
+]

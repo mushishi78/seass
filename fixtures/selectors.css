@@ -1,0 +1,24 @@
+.class {
+    color: red;
+}
+
+.class:hover {
+    color: blue;
+}
+
+#id {
+    color: red;
+}
+
+body {
+    color: red;
+}
+
+.list1,
+.list2 {
+    color: red;
+}
+
+.parent .child .grandchild {
+    color: red
+}

@@ -1,0 +1,9 @@
+subfolder/subfolder.css:1:1-1:10 - Id selector not allowed
+subfolder/subsubfolder/subsubfolder.css:1:1-1:13 - Id selector not allowed
+duplicates1.css:5:1-5:10 - Duplicate classname '.duplicate'
+duplicates1.css:9:1-9:10 - Duplicate classname '.duplicate'
+duplicates2.css:1:1-1:10 - Duplicate classname '.duplicate'
+selectors.css:9:1-9:3 - Id selector not allowed
+selectors.css:13:1-13:4 - Tag selector not allowed
+selectors.css:17:1-18:6 - Selector list not allowed
+selectors.css:22:1-22:26 - Nested selectors not allowed
