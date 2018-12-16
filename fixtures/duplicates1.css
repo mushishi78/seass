@@ -9,3 +9,9 @@
 .duplicate {
     color: red;
 }
+
+@media print {
+    .duplicate {
+        color: red;
+    }
+}

@@ -1,12 +1,8 @@
-.class {
+#id {
     color: red;
 }
 
-.class:hover {
-    color: blue;
-}
-
-#id {
+.danger#id {
     color: red;
 }
 
@@ -21,4 +17,50 @@ body {
 
 .parent .child .grandchild {
     color: red
+}
+
+.p > .c {
+    color: red;
+}
+
+.sib1 + .sib2 {
+    color: red;
+}
+
+.sib3 ~ .sib4 {
+    color: red;
+}
+
+input[type=text] {
+    color: red;
+}
+
+.input[type=text] {
+    color: red;
+}
+
+input[value^="hello white spaces   !"] {
+    color: red;
+}
+
+input[value^="sneaky braces { }"] {
+    color: red;
+}
+
+input[value^="sneaky escaped quote \" "] {
+    color: red;
+}
+
+input[value^="sneaky unclosed comment /* "] {
+    color: red;
+}
+
+* {
+    color: red;
+}
+
+@media only screen and (max-width: 600px) {
+    #id2 {
+        color: red;
+    }
 }

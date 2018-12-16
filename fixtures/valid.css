@@ -1,0 +1,70 @@
+/* This files should just contain some valid css
+ * Need to be able to handle these examples
+ * Examples taken from https://css-tricks.com/the-at-rules-of-css/
+ */
+
+@charset "UTF-8";
+
+.jim {
+    color: white;
+}
+
+.jess {
+    /* Watch out for the nested } */
+    /* Or even unclosed quotes in a comment " */
+    background: blue;
+}
+
+.jess:hover {
+    color: blue;
+}
+
+.jess.selected {
+    color: red;
+}
+
+.many:nth-child(5) {
+    color: red;
+}
+
+@import 'global.css';
+
+@namespace svg url(http://www.w3.org/2000/svg);
+
+@document
+    url-prefix(http://css-tricks.com/snippets/),
+    domain(css-tricks.com)
+{
+  .comic { font-family: Comic Sans; }
+}
+
+@font-face {
+    font-family: 'MyWebFont';
+    src:  url('myfont.woff2') format('woff2'),
+          url('myfont.woff') format('woff');
+}
+
+@keyframes pulse {
+    0% {
+      background-color: #001f3f;
+    }
+    100% {
+      background-color: #ff4136;
+    }
+}
+
+@page :first {
+    margin: 1in;
+}
+
+:root {
+    --main-bg-color: brown;
+}
+
+.one {
+    background: var(--main-bg-color);
+}
+
+.jim /* Duplicate error just to check we're still paying attention */ {
+    color: blue;
+}
