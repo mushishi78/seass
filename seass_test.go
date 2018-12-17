@@ -7,34 +7,50 @@ import (
 )
 
 func TestFixtures(t *testing.T) {
-	expectedErrors := make(map[string]struct{})
+	var err error
+
+	var expectedSlice []string
+	expectedMap := make(map[string]struct{})
 	{
 		bytes, err := ioutil.ReadFile("fixtures/errors.txt")
 		if err != nil {
 			t.Fatal(err)
 		}
 
-		for _, expected := range strings.Split(string(bytes), "\n") {
-			expectedErrors[expected] = struct{}{}
+		expectedSlice = strings.Split(string(bytes), "\n")
+		for _, expected := range expectedSlice {
+			expectedMap[expected] = struct{}{}
 		}
 	}
 
-	actualErrors, err := Lint("fixtures")
+	var actualSlice []string
+	actualMap := make(map[string]struct{})
+	{
+		actualSlice, err = Lint("fixtures")
+		if err != nil {
+			t.Fatal(err)
+		}
 
-	if err != nil {
-		t.Fatal(err)
+		for _, actual := range actualSlice {
+			actualMap[actual] = struct{}{}
+		}
 	}
 
-	for expected := range expectedErrors {
-		if _, ok := actualErrors[expected]; !ok {
+	for expected := range expectedMap {
+		if _, ok := actualMap[expected]; !ok {
 			t.Errorf("Expected error:\n%v", expected)
 		}
 	}
 
-	for actual := range actualErrors {
-		if _, ok := expectedErrors[actual]; !ok {
+	for actual := range actualMap {
+		if _, ok := expectedMap[actual]; !ok {
 			t.Errorf("Did not expect error:\n%v", actual)
 		}
 	}
 
+	for i := 0; i < len(actualSlice); i++ {
+		if actualSlice[i] != expectedSlice[i] {
+			t.Errorf("Errors are not ordered")
+		}
+	}
 }

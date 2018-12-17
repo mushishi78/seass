@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"unicode"
 
@@ -25,7 +26,7 @@ func main() {
 		return
 	}
 
-	for err := range errors {
+	for _, err := range errors {
 		fmt.Fprintln(os.Stderr, err)
 	}
 }
@@ -35,7 +36,7 @@ type config struct {
 }
 
 // Lint takes a project folder looks for SeaSS errors
-func Lint(dir string) (map[string]struct{}, error) {
+func Lint(dir string) ([]string, error) {
 	errors := make(map[string]struct{})
 
 	// Read seass.toml config file
@@ -371,5 +372,11 @@ func Lint(dir string) (map[string]struct{}, error) {
 		}
 	}
 
-	return errors, nil
+	// Order the errors
+	errorsSlice := make([]string, 0)
+	for err := range errors {
+		errorsSlice = append(errorsSlice, err)
+	}
+	sort.Strings(errorsSlice)
+	return errorsSlice, nil
 }
