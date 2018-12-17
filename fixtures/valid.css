@@ -65,6 +65,6 @@
     background: var(--main-bg-color);
 }
 
-.jim /* Duplicate error just to check we're still paying attention */ {
+.duplicate /* Duplicate error just to check we're still paying attention */ {
     color: blue;
 }
